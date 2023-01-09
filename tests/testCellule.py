@@ -123,9 +123,9 @@ class TestCelluleMethods(unittest.TestCase):
                      "Constructeur ou setContenuCellule non écrit")
     def test_OPTION_setContenuCellule_raise_Error_type_value(self):
         c = construireCellule()
-        self.assertRaises(TypeError, setContenuCellule, c, True)
-        self.assertRaises(TypeError, setContenuCellule, c, 13.5)
-        self.assertRaises(TypeError, setContenuCellule, c, [1])
+        self.assertRaises(ValueError, setContenuCellule, c, True)
+        self.assertRaises(ValueError, setContenuCellule, c, 13.5)
+        self.assertRaises(ValueError, setContenuCellule, c, [1])
 
     @unittest.skipIf('construireCellule' not in globals() or 'isVisibleCellule' not in globals() or
                      'setVisibleCellule' not in globals(),
