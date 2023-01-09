@@ -23,6 +23,16 @@ def type_cellule(cell: dict) -> bool:
 #ajout fonction iscontenueCorrect
 
 def isContenuCorrect(nombre: int):
+    # option
     return (type(nombre)== int and (nombre >= 0 and nombre <= 8))or nombre == const.ID_MINE
 
+#ajoute de la fontion construirecellule
 
+def construireCellule(int_contenue = 0, bool_visible = False):
+    #Option
+    if not isContenuCorrect(int_contenue):
+        raise ValueError (f"construireCellule : le contenu {int_contenue} n’est pas correct ")
+    if not type(bool_visible)== bool:
+        raise TypeError (f" construireCellule : le second paramètre {type(bool_visible)} n’est pas un booléen")
+    Cellule = {const.CONTENU: int_contenue, const.VISIBLE : bool_visible}
+    return Cellule

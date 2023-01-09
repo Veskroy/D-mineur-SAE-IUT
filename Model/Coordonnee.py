@@ -22,6 +22,7 @@ def type_coordonnee(coord: tuple) -> bool:
 # Ajout de la fonction construireCoordonner
 
 def construireCoordonnee(n_ligne: int ,n_col:int):
+    # option
     if not (type(n_col)== int and type(n_ligne)==int):
         raise TypeError(f"construireCoordonnee : Le numéro de ligne {type(n_ligne)} ou le numéro de colonne {type(n_col)} ne sont pas des entiers")
     if not n_ligne >= 0 and n_col >= 0:
@@ -31,11 +32,13 @@ def construireCoordonnee(n_ligne: int ,n_col:int):
 # ajout de la fonction getligneCoordonnee
 
 def getLigneCoordonnee(coordonner_tuple:tuple):
+    # option
     if  not (len(coordonner_tuple)== 2 and  type(coordonner_tuple) == tuple and (type(coordonner_tuple[0])== int and type(coordonner_tuple[1])==int)):
         raise TypeError ("getLigneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coordonner_tuple[0]
 # ajout de la fonction getColonneCoordonnee
 def getColonneCoordonnee(coordonner_tuple:tuple):
+    # option
     if not (len(coordonner_tuple)== 2 and type(coordonner_tuple) == tuple and  (type(coordonner_tuple[0]) == int and type(coordonner_tuple[1])==int)):
         raise TypeError ("getLigneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coordonner_tuple[1]
