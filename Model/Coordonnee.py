@@ -30,12 +30,12 @@ def construireCoordonnee(n_ligne: int ,n_col:int):
 
 # ajout de la fonction getligneCoordonnee
 
-def getLigneCoordonnee(coordonner_tuple):
+def getLigneCoordonnee(coordonner_tuple:tuple):
     if  not (len(coordonner_tuple)== 2 and  type(coordonner_tuple) == tuple and (type(coordonner_tuple[0])== int and type(coordonner_tuple[1])==int)):
         raise TypeError ("getLigneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coordonner_tuple[0]
 # ajout de la fonction getColonneCoordonnee
-def getColonneCoordonnee(coordonner_tuple):
+def getColonneCoordonnee(coordonner_tuple:tuple):
     if not (len(coordonner_tuple)== 2 and type(coordonner_tuple) == tuple and  (type(coordonner_tuple[0]) == int and type(coordonner_tuple[1])==int)):
         raise TypeError ("getLigneCoordonnee : Le paramètre n’est pas une coordonnée")
     return coordonner_tuple[1]
