@@ -26,6 +26,7 @@ def isContenuCorrect(nombre: int):
     # option
     return (type(nombre)== int and (nombre >= 0 and nombre <= 8))or nombre == const.ID_MINE
 
+
 #ajoute de la fontion construirecellule
 
 def construireCellule(int_contenue = 0, visible = False):
@@ -37,6 +38,7 @@ def construireCellule(int_contenue = 0, visible = False):
     Cellule = {const.CONTENU: int_contenue, const.VISIBLE: visible}
     return Cellule
 
+
 # ajoout de la fonction getCOntenuecellule get Visible cellule
 
 def getContenuCellule(cellule:dict):
@@ -44,6 +46,8 @@ def getContenuCellule(cellule:dict):
     if not type_cellule(cellule):
         raise TypeError (f"getContenuCellule : Le paramètre n’est pas une cellule")
     return cellule[const.CONTENU]
+
+
 def isVisibleCellule(cellule:dict):
     # option
     if not type_cellule(cellule):
@@ -65,6 +69,7 @@ def setContenuCellule (cellule:dict, contenu: int):
    cellule[const.CONTENU] =contenu
    return
 
+
 # ajout de setvisible Cellule
 
 def setVisibleCellule(cellule:dict,visible:bool):
@@ -74,6 +79,8 @@ def setVisibleCellule(cellule:dict,visible:bool):
         raise TypeError(f" setVisibleCellule : Le second paramètre n’est pas un booléen")
     cellule[const.VISIBLE] = visible
     return
+
+
 # ajout de contientMineCellule
 def contientMineCellule(cellule:dict):
     # option
