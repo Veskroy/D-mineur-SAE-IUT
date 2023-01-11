@@ -6,6 +6,7 @@ from random import shuffle, randint
 from itertools import filterfalse
 
 
+
 # Méthode gérant la grille du démineur
 # La grille d'un démineur est un tableau 2D régulier (rectangulaire)
 #
@@ -105,4 +106,36 @@ def getCelluleGrilleDemineur(grille:list,coo:tuple):
     if not isCoordonneeCorrecte(grille,coo):
         raise IndexError(f"getCelluleGrilleDemineur : coordonnée non contenue dans la grille")
     return grille[coo[0]][coo[1]]
+
+#ajout getContenuGrilleDemineur
+
+def getContenuGrilleDemineur(grille:list,coo:tuple):
+    cellule=getCelluleGrilleDemineur(grille,coo)
+    return getContenuCellule(cellule)
+
+#ajout setContenuGrilleDemineur
+
+def setContenuGrilleDemineur(grille:list,coo:tuple,newcontenu:int):
+
+    cellule=getCelluleGrilleDemineur(grille,coo)
+    setContenuCellule(cellule,newcontenu)
+    return
+
+
+#ajout isVisibleGrilleDemineur
+
+def isVisibleGrilleDemineur(grille:list,coo:tuple,):
+    cellule = getCelluleGrilleDemineur(grille, coo)
+    return isVisibleCellule(cellule)
+
+#ajout setVisibleGrilleDemineur
+
+def setVisibleGrilleDemineur(grille:list,coo:tuple,newvisible:bool):
+    cellule = getCelluleGrilleDemineur(grille, coo)
+    setVisibleCellule(cellule,newvisible)
+    return
+
+def contientMineGrilleDemineur(grille:list,coo:tuple):
+    cellule = getCelluleGrilleDemineur(grille, coo)
+    return contientMineCellule(cellule)
 
