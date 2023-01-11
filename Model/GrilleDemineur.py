@@ -139,3 +139,15 @@ def contientMineGrilleDemineur(grille:list,coo:tuple):
     cellule = getCelluleGrilleDemineur(grille, coo)
     return contientMineCellule(cellule)
 
+
+
+# Ici on va commencer les fonction neccesaire a la mise en place du jeux.
+
+def getCoordonneeVoisinsGrilleDemineur(grille:list,coo:tuple):
+    voisin=[]
+    for ligne in range((coo[0]-1),(coo[0]+2)):
+        for colone in range ((coo[0]-1),(coo[0]+2)):
+            cellule=grille[ligne][colone]
+            if (isCoordonneeCorrecte(grille,cellule)) and (cellule != coo):
+                voisin.append(cellule)
+    return voisin
