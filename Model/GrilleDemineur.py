@@ -116,7 +116,6 @@ def getContenuGrilleDemineur(grille:list,coo:tuple):
 #ajout setContenuGrilleDemineur
 
 def setContenuGrilleDemineur(grille:list,coo:tuple,newcontenu:int):
-
     cellule=getCelluleGrilleDemineur(grille,coo)
     setContenuCellule(cellule,newcontenu)
     return
@@ -144,10 +143,17 @@ def contientMineGrilleDemineur(grille:list,coo:tuple):
 # Ici on va commencer les fonction neccesaire a la mise en place du jeux.
 
 def getCoordonneeVoisinsGrilleDemineur(grille:list,coo:tuple):
+    #option
+    if type(grille) != list or type(coo) != tuple:
+        raise TypeError(f"getCoordonneeVoisinsGrilleDemineur : un des paramètres n’est pas du bon type")
+    if not isCoordonneeCorrecte(grille,coo):
+        raise IndexError(" getCoordonneeVoisinsGrilleDemineur : la coordonnée n’est pas dans la grille.")
     voisin=[]
-    for ligne in range((coo[0]-1),(coo[0]+2)):
-        for colone in range ((coo[0]-1),(coo[0]+2)):
-            cellule=grille[ligne][colone]
-            if (isCoordonneeCorrecte(grille,cellule)) and (cellule != coo):
-                voisin.append(cellule)
+    for ligne in range((coo[0])-1,(coo[0])+2):
+        for colone in range ((coo[1]-1),(coo[1]+2)):
+            if (ligne >= 0 and colone >= 0):
+                coordonner = construireCoordonnee(ligne, colone)
+                if isCoordonneeCorrecte(grille,coordonner) and (coordonner != coo):
+                    voisin.append(coordonner)
     return voisin
+
