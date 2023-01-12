@@ -148,6 +148,7 @@ def getCoordonneeVoisinsGrilleDemineur(grille:list,coo:tuple):
         raise TypeError(f"getCoordonneeVoisinsGrilleDemineur : un des paramètres n’est pas du bon type")
     if not isCoordonneeCorrecte(grille,coo):
         raise IndexError(" getCoordonneeVoisinsGrilleDemineur : la coordonnée n’est pas dans la grille.")
+    #code
     voisin=[]
     for ligne in range((coo[0])-1,(coo[0])+2):
         for colone in range ((coo[1]-1),(coo[1]+2)):
@@ -157,3 +158,18 @@ def getCoordonneeVoisinsGrilleDemineur(grille:list,coo:tuple):
                     voisin.append(coordonner)
     return voisin
 
+#ajout de placerMineGrilleDemineur
+
+def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
+    coord_mines = []
+    while len(coord_mines) != nb:
+        mine = (randint(0, getNbLignesGrilleDemineur(grille)), randint(0, getNbColonnesGrilleDemineur(grille)))
+        if mine != coord and not mine in coord_mines and isCoordonneeCorrecte(grille, mine):
+            coord_mines.append(mine)
+            cell = getCelluleGrilleDemineur(grille, mine)
+            setContenuCellule(cell, const.ID_MINE)
+    return
+
+def compterMinesVoisinesGrilleDemineur(grille):
+
+    return
