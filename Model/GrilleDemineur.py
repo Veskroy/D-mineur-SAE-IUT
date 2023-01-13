@@ -164,9 +164,11 @@ def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
     coord_mines = []
     while len(coord_mines) != nb:
         mine = (randint(0, getNbLignesGrilleDemineur(grille)), randint(0, getNbColonnesGrilleDemineur(grille)))
+        #print( grille]
         if mine != coord and not mine in coord_mines and isCoordonneeCorrecte(grille, mine):
             coord_mines.append(mine)
             cell = getCelluleGrilleDemineur(grille, mine)
+
             setContenuCellule(cell, const.ID_MINE)
     return
 
