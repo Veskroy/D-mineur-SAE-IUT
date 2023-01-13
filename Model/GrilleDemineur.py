@@ -248,3 +248,23 @@ def perduGrilleDemineur(grille):
             if contientMineGrilleDemineur(grille, coo) and isVisibleGrilleDemineur(grille, coo) == True:
                 perdu = True
     return perdu
+def reinitialiserCellule(cell):
+    cell[const.CONTENU]= 0
+    cell[const.VISIBLE] = False
+    cell[const.ANNOTATION]= None
+    return
+def reinitialiserGrilleDemineur(grille):
+    for ligne in grille:
+        for cell in ligne:
+            reinitialiserCellule(cell)
+    return
+def decouvrirGrilleDemineur(grille:list,coord:tuple):
+    decouvert=set(coord)
+    setVisibleGrilleDemineur(grille, coord, True)
+    voisinage=getCoordonneeVoisinsGrilleDemineur(grille,coord)
+    for voisin in voisinage:
+        if getContenuGrilleDemineur(grille, voisin) == 0:
+           decouvert.(decouvrirGrilleDemineur(grille,voisin))
+    return decouvert
+
+
