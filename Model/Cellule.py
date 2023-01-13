@@ -99,8 +99,18 @@ def isAnnotationCorrecte(anot:str)-> bool:
 
 def  getAnnotationCellule(cell):
     if not type_cellule(cell):
-        raise TypeError(f"getAnnotationCellule : le paramètre valeur_du paramètre n’est pas une cellule")
+        raise TypeError(f"getAnnotationCellule : le paramètre {cell} n’est pas une cellule")
     if not const.ANNOTATION in cell:
         return None
     return cell[const.ANNOTATION]
 
+def  changeAnnotationCellule(cell):
+    if not type_cellule(cell):
+        raise TypeError(f"getAnnotationCellule : le paramètre  n’est pas une cellule")
+    if getAnnotationCellule(cell) == None:
+        cell[const.ANNOTATION]=const.FLAG
+    elif getAnnotationCellule(cell) == const.FLAG:
+        cell[const.ANNOTATION] = const.DOUTE
+    elif getAnnotationCellule(cell) == const.DOUTE:
+        cell[const.ANNOTATION] = None
+    return
