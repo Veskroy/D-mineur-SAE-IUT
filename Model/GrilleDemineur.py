@@ -180,4 +180,5 @@ def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
             # ajout a la suvegarde + comodification de la cellule
     return
 
-#
+#ajout de compterMinesVoisinesGrilleDemineur
+def compterMinesVoisinesGrilleDemineur(grille:list):
