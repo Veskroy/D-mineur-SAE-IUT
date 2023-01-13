@@ -182,3 +182,13 @@ def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
 
 #ajout de compterMinesVoisinesGrilleDemineur
 def compterMinesVoisinesGrilleDemineur(grille:list):
+    for ligne in range(getNbLignesGrilleDemineur(grille)):
+        for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            nb_mine_autour = 0
+            if not contientMineGrilleDemineur(grille,construireCoordonnee(ligne,colonne)):
+                voisin=getCoordonneeVoisinsGrilleDemineur(grille,construireCoordonnee(ligne,colonne))
+                for voisin_x in voisin:
+                    if contientMineGrilleDemineur(grille,voisin_x):
+                        nb_mine_autour+=1
+                setContenuGrilleDemineur(grille,construireCoordonnee(ligne,colonne),nb_mine_autour)
+    return
