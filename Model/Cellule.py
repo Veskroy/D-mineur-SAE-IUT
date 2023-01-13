@@ -29,13 +29,13 @@ def isContenuCorrect(nombre: int):
 
 #ajoute de la fontion construirecellule
 
-def construireCellule(int_contenue = 0, visible = False):
+def construireCellule(int_contenue = 0, visible = False, annotation=None):
     #Option
     if not isContenuCorrect(int_contenue):
         raise ValueError (f"construireCellule : le contenu {int_contenue} n’est pas correct ")
     if not type(visible)== bool:
         raise TypeError (f" construireCellule : le second paramètre {type(visible)} n’est pas un booléen")
-    Cellule = {const.CONTENU: int_contenue, const.VISIBLE: visible}
+    Cellule = {const.CONTENU: int_contenue, const.VISIBLE: visible,const.ANNOTATION: annotation}
     return Cellule
 
 
@@ -90,3 +90,9 @@ def contientMineCellule(cellule:dict):
     if cellule[const.CONTENU]== const.ID_MINE:
         Reponse = True # si il y a un mine on répond VRAi
     return Reponse # TRUE == il y a une bombe FALSE == il n'y en a pas
+
+def isAnnotationCorrecte(anot:str)-> bool:
+    result=False
+    if anot== None or anot == const.DOUTE or anot== const.FLAG :
+        result=True
+    return result
