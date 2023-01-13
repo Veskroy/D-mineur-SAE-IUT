@@ -69,7 +69,7 @@ def construireGrilleDemineur(n_lig: int, n_col: int):
     Grille=[]
     etage=[]
     for ligne in range(n_lig):
-        etage.clear()
+        etage=[]
         for colonne in range(n_col):
             etage.append(construireCellule())
         Grille.append(etage)
@@ -161,17 +161,23 @@ def getCoordonneeVoisinsGrilleDemineur(grille:list,coo:tuple):
 #ajout de placerMineGrilleDemineur
 
 def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
+    #option
+    if nb<= 0 or nb>=(getNbLignesGrilleDemineur(grille)*getNbColonnesGrilleDemineur(grille)):
+        raise ValueError (f" placerMinesGrilleDemineur : Nombre de bombes à placer incorrect")
+    if not isCoordonneeCorrecte(grille,coord):
+        raise IndexError(f"placerMinesGrilleDemineur : la coordonnée n’est pas dans la grille.")
+    #code
     coord_mines = []
+    #création de la liste qui seris de sauvegarde et de nombre de boucle
     while len(coord_mines) != nb:
         mine = (randint(0, getNbLignesGrilleDemineur(grille)), randint(0, getNbColonnesGrilleDemineur(grille)))
-        #print( grille]
+        #selection d'un cellule aléatoire
         if mine != coord and not mine in coord_mines and isCoordonneeCorrecte(grille, mine):
+
             coord_mines.append(mine)
             cell = getCelluleGrilleDemineur(grille, mine)
-
             setContenuCellule(cell, const.ID_MINE)
+            # ajout a la suvegarde + comodification de la cellule
     return
 
-def compterMinesVoisinesGrilleDemineur(grille):
-
-    return
+#
