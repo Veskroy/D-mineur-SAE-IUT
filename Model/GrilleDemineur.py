@@ -239,3 +239,12 @@ def gagneGrilleDemineur(grille):
                 gagner = False
     return gagner
 
+def perduGrilleDemineur(grille):
+    perdu = False
+    for ligne in range(getNbLignesGrilleDemineur(grille)):
+        for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            # a noter que je suis obliger d'avoir des cooordonne pour utiliser la fonction
+            coo = construireCoordonnee(ligne, colonne)
+            if contientMineGrilleDemineur(grille, coo) and isVisibleGrilleDemineur(grille, coo) == True:
+                perdu = True
+    return perdu
