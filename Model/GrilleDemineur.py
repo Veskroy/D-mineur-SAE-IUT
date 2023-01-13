@@ -263,8 +263,8 @@ def decouvrirGrilleDemineur(grille:list,coord:tuple):
     setVisibleGrilleDemineur(grille, coord, True)
     voisinage=getCoordonneeVoisinsGrilleDemineur(grille,coord)
     for voisin in voisinage:
-        if getContenuGrilleDemineur(grille, voisin) == 0:
-           decouvert.(decouvrirGrilleDemineur(grille,voisin))
+        if getContenuGrilleDemineur(grille, voisin) == 0 and isVisibleGrilleDemineur(grille,voisin) == False:
+           decouvert.update(decouvrirGrilleDemineur(grille,voisin))
     return decouvert
 
 
