@@ -221,6 +221,21 @@ def getMinesRestantesGrilleDemineur(grille):
     nb_flag=0
     for ligne in range(getNbLignesGrilleDemineur(grille)):
         for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            # a noter que je suis obliger d'avoir des cooordonne pour utiliser la fonction
             if getAnnotationGrilleDemineur(grille,construireCoordonnee(ligne,colonne)) == const.FLAG:
                 nb_flag+=1
     return nb_mine -nb_flag
+
+def gagneGrilleDemineur(grille):
+    gagner=True
+    for ligne in range(getNbLignesGrilleDemineur(grille)):
+        for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            # a noter que je suis obliger d'avoir des cooordonne pour utiliser la fonction
+            coo=construireCoordonnee(ligne,colonne)
+            if not contientMineGrilleDemineur(grille,coo):
+                if isVisibleGrilleDemineur(grille,coo) == False :
+                    gagner = False
+            elif isVisibleGrilleDemineur(grille,coo) == True:
+                gagner = False
+    return gagner
+
