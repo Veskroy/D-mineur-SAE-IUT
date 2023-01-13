@@ -178,17 +178,34 @@ def placerMinesGrilleDemineur(grille:list,nb:int,coord:tuple):
             cell = getCelluleGrilleDemineur(grille, mine)
             setContenuCellule(cell, const.ID_MINE)
             # ajout a la suvegarde + comodification de la cellule
+    compterMinesVoisinesGrilleDemineur(grille)
     return
 
 #ajout de compterMinesVoisinesGrilleDemineur
 def compterMinesVoisinesGrilleDemineur(grille:list):
     for ligne in range(getNbLignesGrilleDemineur(grille)):
         for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            # pour obtenir les cood
             nb_mine_autour = 0
+            # va remplacer le contenue a la fin
             if not contientMineGrilleDemineur(grille,construireCoordonnee(ligne,colonne)):
+                # verifie si la cellele n'est pas un mine
                 voisin=getCoordonneeVoisinsGrilleDemineur(grille,construireCoordonnee(ligne,colonne))
                 for voisin_x in voisin:
+                    # parcout les voisin pour trouver les mine
                     if contientMineGrilleDemineur(grille,voisin_x):
                         nb_mine_autour+=1
                 setContenuGrilleDemineur(grille,construireCoordonnee(ligne,colonne),nb_mine_autour)
     return
+
+#ajour de la fonction  getNbMinesGrilleDemineur
+def getNbMinesGrilleDemineur( grille:list)->int:
+    if not type_grille_demineur(grille):
+        raise ValueError(f"getNbMinesGrilleDemineur : le paramètre n’est pas une grille")
+    mine_total=0
+    for ligne in range(getNbLignesGrilleDemineur(grille)):
+        for colonne in range(getNbColonnesGrilleDemineur(grille)):
+            #a noter que je suis obliger d'avoir des cooordonne pour utiliser contientMinesGrilleDemineur
+            if contientMineGrilleDemineur(grille,construireCoordonnee(ligne,colonne)):
+                mine_total+=1
+    return mine_total
