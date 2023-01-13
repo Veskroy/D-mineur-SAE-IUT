@@ -96,3 +96,11 @@ def isAnnotationCorrecte(anot:str)-> bool:
     if anot== None or anot == const.DOUTE or anot== const.FLAG :
         result=True
     return result
+
+def  getAnnotationCellule(cell):
+    if not type_cellule(cell):
+        raise TypeError(f"getAnnotationCellule : le paramètre valeur_du paramètre n’est pas une cellule")
+    if not const.ANNOTATION in cell:
+        return None
+    return cell[const.ANNOTATION]
+
