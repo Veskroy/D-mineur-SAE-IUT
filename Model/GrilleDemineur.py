@@ -209,3 +209,8 @@ def getNbMinesGrilleDemineur( grille:list)->int:
             if contientMineGrilleDemineur(grille,construireCoordonnee(ligne,colonne)):
                 mine_total+=1
     return mine_total
+
+#ajout getAnnotationGrilleDemineur
+def getAnnotationGrilleDemineur(grille:list,coord:tuple):
+    cellule = getCelluleGrilleDemineur(grille, coord)
+    return getAnnotationCellule(cellule)
